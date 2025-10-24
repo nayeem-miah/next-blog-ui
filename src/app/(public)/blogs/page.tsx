@@ -2,8 +2,10 @@
 import BlogCard from "@/components/modules/Blogs/BlogCard";
 
 const AllBlogsPage = async () => {
-
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post`);
+  // ? ssr fetching and cashing
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post`, {
+    cache: "no-store"
+  });
   const { data: blogs } = await res.json();
 
 
