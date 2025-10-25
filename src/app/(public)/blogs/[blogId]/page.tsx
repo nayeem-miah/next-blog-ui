@@ -1,5 +1,19 @@
 import BlogDetailsCard from "@/components/modules/Blogs/BlogDetailsCard";
 
+
+export const generateMetadata = async ({ params }: {
+    params: Promise<{ blogId: string }>
+}) => {
+    const { blogId } = await params;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/${blogId}`);
+    const blog = await res.json();
+
+    return {
+        title: blog?.data?.title
+    }
+};
+
+
 async function BlogDetailsPage({ params }: {
     params: Promise<{ blogId: string }>
 }) {

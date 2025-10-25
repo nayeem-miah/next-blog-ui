@@ -1,6 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import BlogCard from "@/components/modules/Blogs/BlogCard";
 
+export const metadata = {
+  title: "Blog page | next-ui-blog",
+  description: "THis is next ui description ",
+  // keyword: ["web development"]
+}
+
+
+
 const AllBlogsPage = async () => {
   // ? ssr fetching and cashing
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post`, {

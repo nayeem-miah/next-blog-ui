@@ -1,6 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 
+export const generateStaticParams = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post`)
+  const { data: blogs } = await res.json();
+
+  return blogs?.data?.slice(0, 2).map((blog: any) => ({
+    blogId: String(blog.id),
+  }))
+};
+
+
+
 export default async function BlogDetailsCard({ blog }: { blog: any }) {
   if (!blog) {
     return (
