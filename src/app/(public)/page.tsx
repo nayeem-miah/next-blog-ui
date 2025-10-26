@@ -11,7 +11,7 @@ export default async function HomePage() {
     }
   });
   const { data: posts } = await res.json();
-  console.log(posts);
+  // console.log(posts);
   return (
     <div>
       <Hero />
