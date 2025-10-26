@@ -6,8 +6,11 @@ export default async function HomePage() {
 
   //  isr 
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post`, {
+    // next: {
+    //   revalidate: 30
+    // }
     next: {
-      revalidate: 30
+      tags: ["BLOGS"]
     }
   });
   const { data: posts } = await res.json();

@@ -30,7 +30,7 @@ export const create = async (data: FormData) => {
     if (result?.data?.id) {
         revalidateTag("BLOGS");
         revalidatePath("/blogs");
-        redirect("/blogs");
+        redirect("/");
     }
     return result;
 };
