@@ -54,6 +54,9 @@ export default function LoginForm() {
         signIn("google", {
             callbackUrl: "/dashboard"
         })
+        signIn("github", {
+            callbackUrl: "/dashboard"
+        })
     };
 
     return (
