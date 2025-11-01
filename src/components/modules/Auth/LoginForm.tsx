@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { login } from "@/actions/auth";
+
 
 // type LoginFormValues = {
 //     email: string;
@@ -31,19 +31,22 @@ export default function LoginForm() {
     });
 
     const onSubmit = async (values: FieldValues) => {
-        try {
-            const res = await login(values);
-            console.log(res);
+        // try {
+        //     const res = await login(values);
+        //     if (res?.data?.id) {
+        //         alert("login success");
+        //     } else {
+        //         alert("user login failed❌")
+        //     }
+        // } catch (error) {
+        //     console.error(error)
+        // }
 
-            if (res?.data?.id) {
-                alert("login success");
-            } else {
-                alert("user login failed❌")
-            }
-
-        } catch (error) {
-            console.error(error)
-        }
+        // * next auth signIn function
+        signIn("credentials", {
+            ...values,
+            callbackUrl: "/dashboard"
+        })
     };
 
     const handleSocialLogin = (provider: "google" | "github") => {
