@@ -1,11 +1,10 @@
-import { authOptions } from "@/helpers/authOptions";
-import { getServerSession } from "next-auth";
+import { getUserSession } from "@/helpers/getUserSession";
 import Image from "next/image";
 
 const DashboardHomePage = async () => {
 
 
-  const session = await getServerSession(authOptions);
+  const session = await getUserSession()
   // console.log(session);
 
   return (

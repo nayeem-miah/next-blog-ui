@@ -8,5 +8,8 @@ export const authOptions = {
         })
     ],
     secret: process.env.NEXT_SECRET_TOKEN,
+    pages: {
+        signIn: "/login"
+    }
 }
 

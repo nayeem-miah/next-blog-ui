@@ -28,3 +28,9 @@ Clone the repository, install dependencies, and start the dev server
 <!-- get client id && client serret -->
 <!-- google login done -->
 <!-- sign out done -->
+<!-- create auth provider and session (getServerSession and useSession) -->
+
+<!-- middleware -->
+<!-- next auth middleware -->
+
+
