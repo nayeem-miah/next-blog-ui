@@ -1,9 +1,28 @@
 
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions = {
+declare module "next-auth" {
+    interface Session {
+        user: {
+            id: string;
+            name?: string | null;
+            email?: string | null;
+            image?: string | null;
+        };
+    }
+    interface User {
+        id: string;
+        name?: string | null;
+        email?: string | null;
+        image?: string | null;
+    }
+};
+
+
+
+export const authOptions: NextAuthOptions = {
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -37,7 +56,7 @@ export const authOptions = {
                     }
 
                     const user = await res.json();
-                    console.log(user);
+                    // console.log(user);
                     if (user) {
                         return {
                             id: user.data.id,
@@ -54,6 +73,26 @@ export const authOptions = {
             },
         }),
     ],
+
+    callbacks: {
+        // * handle server component
+        async jwt({ token, user }) {
+            if (user) {
+                token.id = user?.id
+            }
+            return token;
+        },
+        // * handle client or session component
+        async session({ session, token }) {
+            if (session?.user) {
+                session.user.id = token.id as string
+            }
+            return session;
+        }
+
+    },
+
+
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
         signIn: "/login",
