@@ -9,8 +9,8 @@ A modern blog built with **Next.js 14 (App Router)**, featuring SSR, SSG, authen
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/your-username/nextjs-blog.git
-cd nextjs-blog
+git clone https://github.com/nayeem-miah/next-blog-ui.git
+cd next-blog-ui
 npm install
 ````
 
